@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>NATO TRILAT / Nuclear Burden Sharing</title>
+  <meta name="viewport" content="initial-scale=1.0">
+  <meta charset="utf-8">
+  <!-- Include Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
+  <link href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" rel="stylesheet">
+  <!-- Include CARTO.js -->
+  <script src="https://cartodb-libs.global.ssl.fastly.net/carto.js/v4.0.2/carto.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600" rel="stylesheet">
+  <link href="zoom_slider/zoomslider.css" rel="stylesheet">
+  <script src="zoom_slider/zoomslider.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+  <div id="map"></div>
+  <!-- Description -->
+  <aside class="toolbox">
+    <input type="checkbox" class="ui mobile-only">
+    <div class="hamburger mobile-only">
+      <div class="icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="menu">
+        NATO TRILAT / Nuclear Burden Sharing
+      </div>
+    </div>
+
+    <div class="box">
+
+
+      <header>
+        <h1 class="title mobile-toggle">NATO TRILAT / Nuclear Burden Sharing</h1>
+        <p>This map... </p>
+      </header>
+      <div class="separator"></div>
+      <section>
+        <div class="filter-label">Rank by</div>
+        <div name="ranking" id="ranking" class="ranking selection">
+          <div>
+            <div class="name"><input type="radio" name="metric" value="basing" checked>Basing Country
+            </div>
+            <div class="desc">Host U.S. nuclear weapons (Y/N)</div>
+          </div>
+          <div>
+            <div class="name"><input type="radio" name="metric" value="host_troops">Host Troops</div>
+            <div class="desc">Does the country host EFP/Tripwire Forces (Y/N)</div>
+          </div>
+          <div>
+            <div class="name"><input type="radio" name="metric" value="efp_troops">Contribute Troops</div>
+            <div class="desc">EFP contributions (number of troops)</div>
+          </div>
+          <div>
+            <div class="name"><input type="radio" name="metric" value="iaea_budget">IAEA budget</div>
+            <div class="desc">Percent of IAEA’s regular budget the country contributed to in 2016.</div>
+          </div>
+          <div>
+            <div class="name"><input type="radio" name="metric" value="security_summit">Gift Baskets</div>
+            <div class="desc">Number of “gift baskets” (commitments by multiple countries participating in Nuclear Security Summits) in which the country participated.</div>
+          </div>
+
+        </div>
+        <div class="separator"></div>
+
+        <div class="legend-bar-container legend">
+          <div class="range">
+            <span id="legend-min" class="legend-label">No</span>
+            <span id="legend-max" class="legend-label">Yes</span>
+          </div>
+          <div class="not-applicable-text"><span class="legend-label">N/A</span></div>
+        </div>
+
+
+        <div class="legend">
+          <div id="legend-bar"></div>
+          <div class="not-applicable-pattern"></div>
+        </div>
+
+
+        <div class="legend-label label-base base-us">U.S. Bases</div>
+
+      </section>
+      <footer class="js-footer"></footer>
+    </div>
+  </aside>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
