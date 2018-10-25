@@ -21,13 +21,12 @@ map.attributionControl.addAttribution(
 );
 
 var client = new carto.Client({
-  apiKey: "PpchX7r8JDaluAILJ9uLCg",
+  apiKey: "B9Ai9g48WmZGLHXmGEzx7w",
   username: "csis"
 });
 
 const natoCountriesData = new carto.source.Dataset("nato_trilat");
 
-console.log(natoCountriesData);
 const natoCountriesStyles = new carto.style.CartoCSS(`
   #layer {
     polygon-opacity: 0.5;
@@ -54,21 +53,35 @@ const natoCountriesLayer = new carto.layer.Layer(
   }
 );
 
-const basesData = new carto.source.Dataset("bases");
-const basesStyles = new carto.style.CartoCSS(`
-  #layer {
-    marker-width: 12;
-    marker-fill: #fa0;
-    marker-line-color: #fff;
-    marker-allow-overlap: true;
-  }
-`);
+// const basesData = new carto.source.Dataset("bases");
+// const basesStyles = new carto.style.CartoCSS(`
+//   #layer {
+//     marker-width: 12;
+//     marker-fill: #fa0;
+//     marker-line-color: #fff;
+//     marker-allow-overlap: true;
+//   }
+// `);
+//
+// const basesLayer = new carto.layer.Layer(basesData, basesStyles, {
+//   featureOverColumns: ["name"]
+// });
+//
+// const popupBases = L.popup({ closeButton: false });
+// basesLayer.on(carto.layer.events.FEATURE_OVER, featureEvent => {
+//   let data = featureEvent.data;
+//   popupBases.setLatLng(featureEvent.latLng);
+//   popupBases.setContent(data.name);
+//   if (!popupBases.isOpen()) {
+//     popupBases.openOn(map);
+//   }
+// });
+//
+// basesLayer.on(carto.layer.events.FEATURE_OUT, featureEvent => {
+//   popupBases.removeFrom(map);
+// });
 
-const basesLayer = new carto.layer.Layer(basesData, basesStyles, {
-  featureOverColumns: ["name"]
-});
-
-client.addLayers([natoCountriesLayer, basesLayer]);
+client.addLayers([natoCountriesLayer]);
 client.getLeafletLayer().addTo(map);
 
 const popup = L.popup({ closeButton: false });
@@ -118,20 +131,6 @@ natoCountriesLayer.on(carto.layer.events.FEATURE_OVER, featureEvent => {
 
 natoCountriesLayer.on(carto.layer.events.FEATURE_OUT, featureEvent => {
   popup.removeFrom(map);
-});
-
-const popupBases = L.popup({ closeButton: false });
-basesLayer.on(carto.layer.events.FEATURE_OVER, featureEvent => {
-  let data = featureEvent.data;
-  popupBases.setLatLng(featureEvent.latLng);
-  popupBases.setContent(data.name);
-  if (!popupBases.isOpen()) {
-    popupBases.openOn(map);
-  }
-});
-
-basesLayer.on(carto.layer.events.FEATURE_OUT, featureEvent => {
-  popupBases.removeFrom(map);
 });
 
 function validatePopupValue(value, prefix = "", suffix = "") {
